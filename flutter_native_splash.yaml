@@ -149,7 +149,6 @@ flutter_native_splash:
     icon_background_color: "#FFFFFF"
     icon_background_color_dark: "#171717"
 
-    # branding:
-    # The branding image dimensions must be 800x320 px.
-    #branding:      assets/dart.png
-    #branding_dark: assets/dart_dark.png
+
+    branding: assets/images/news_branding_light_mode.png
+    branding_dark: assets/images/news_branding.png
