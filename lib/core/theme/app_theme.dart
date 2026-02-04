@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'app_colors.dart';
 
@@ -13,18 +14,7 @@ abstract class AppTheme {
     useMaterial3: true,
     primaryColor: AppColors.primaryColorLight,
     fontFamily: "inter",
-    textTheme: TextTheme(
-      titleLarge: TextStyle(
-        //20
-        fontWeight: FontWeight.w700,
-        color: AppColors.primaryColorDark,
-      ),
-      titleMedium: TextStyle(
-        //16
-        fontWeight: FontWeight.w500,
-        color: AppColors.blackColor,
-      ),
-    ),
+    textTheme: GoogleFonts.interTextTheme(),
     appBarTheme: AppBarTheme(
       centerTitle: true,
       backgroundColor: Colors.transparent,
@@ -37,29 +27,17 @@ abstract class AppTheme {
   );
   static ThemeData darkMode = ThemeData(
     brightness: Brightness.dark,
-
+    textTheme: GoogleFonts.interTextTheme(),
     scaffoldBackgroundColor: AppColors.primaryColorDark,
     useMaterial3: true,
     primaryColor: AppColors.primaryColorDark,
     fontFamily: "inter",
-    textTheme: TextTheme(
-      titleLarge: TextStyle(
-        //20
-        fontWeight: FontWeight.w700,
-        color: AppColors.primaryColorLight,
-      ),
-      titleMedium: TextStyle(
-        //16
-        fontWeight: FontWeight.w500,
-        color: AppColors.primaryColorLight,
-      ),
-    ),
     appBarTheme: AppBarTheme(
       centerTitle: true,
       backgroundColor: Colors.transparent,
       foregroundColor: AppColors.primaryColorLight,
       titleTextStyle: TextStyle(
-        fontFamily: "inter",
+        fontFamily: GoogleFonts.inter().fontFamily,
         fontWeight: FontWeight.w400,
         color: textColorTitle,
         fontSize: 20,

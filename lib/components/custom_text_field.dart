@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../core/extensions/context_extensions.dart';
-import '../core/gen/assets.gen.dart';
 import '../core/theme/app_colors.dart';
 
 enum IconPosition { start, end }

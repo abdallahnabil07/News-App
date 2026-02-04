@@ -17,14 +17,43 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/arrow_down.svg
+  SvgGenImage get arrowDown => const SvgGenImage('assets/icons/arrow_down.svg');
+
+  /// File path: assets/icons/arrow_left.svg
+  SvgGenImage get arrowLeft => const SvgGenImage('assets/icons/arrow_left.svg');
+
+  /// File path: assets/icons/arrow_right.svg
+  SvgGenImage get arrowRight =>
+      const SvgGenImage('assets/icons/arrow_right.svg');
+
   /// File path: assets/icons/close.svg
   SvgGenImage get close => const SvgGenImage('assets/icons/close.svg');
+
+  /// File path: assets/icons/home_icon.svg
+  SvgGenImage get homeIcon => const SvgGenImage('assets/icons/home_icon.svg');
+
+  /// File path: assets/icons/language_icon.svg
+  SvgGenImage get languageIcon =>
+      const SvgGenImage('assets/icons/language_icon.svg');
 
   /// File path: assets/icons/search.svg
   SvgGenImage get search => const SvgGenImage('assets/icons/search.svg');
 
+  /// File path: assets/icons/theme_icon.svg
+  SvgGenImage get themeIcon => const SvgGenImage('assets/icons/theme_icon.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [close, search];
+  List<SvgGenImage> get values => [
+    arrowDown,
+    arrowLeft,
+    arrowRight,
+    close,
+    homeIcon,
+    languageIcon,
+    search,
+    themeIcon,
+  ];
 }
 
 class $AssetsImagesGen {
@@ -37,6 +66,44 @@ class $AssetsImagesGen {
   AssetGenImage get splashDark =>
       const AssetGenImage('assets/images/Splash_dark.png');
 
+  /// File path: assets/images/busniess.png
+  AssetGenImage get busniess =>
+      const AssetGenImage('assets/images/busniess.png');
+
+  /// File path: assets/images/busniess_dark.png
+  AssetGenImage get busniessDark =>
+      const AssetGenImage('assets/images/busniess_dark.png');
+
+  /// File path: assets/images/entertainment.png
+  AssetGenImage get entertainment =>
+      const AssetGenImage('assets/images/entertainment.png');
+
+  /// File path: assets/images/entertainment_dark.png
+  AssetGenImage get entertainmentDark =>
+      const AssetGenImage('assets/images/entertainment_dark.png');
+
+  /// File path: assets/images/general.png
+  AssetGenImage get general => const AssetGenImage('assets/images/general.png');
+
+  /// File path: assets/images/general_dark.png
+  AssetGenImage get generalDark =>
+      const AssetGenImage('assets/images/general_dark.png');
+
+  /// File path: assets/images/helth.png
+  AssetGenImage get helth => const AssetGenImage('assets/images/helth.png');
+
+  /// File path: assets/images/helth_dark.png
+  AssetGenImage get helthDark =>
+      const AssetGenImage('assets/images/helth_dark.png');
+
+  /// File path: assets/images/news_branding.png
+  AssetGenImage get newsBranding =>
+      const AssetGenImage('assets/images/news_branding.png');
+
+  /// File path: assets/images/news_branding_light_mode.png
+  AssetGenImage get newsBrandingLightMode =>
+      const AssetGenImage('assets/images/news_branding_light_mode.png');
+
   /// File path: assets/images/news_logo_dark.png
   AssetGenImage get newsLogoDark =>
       const AssetGenImage('assets/images/news_logo_dark.png');
@@ -45,12 +112,54 @@ class $AssetsImagesGen {
   AssetGenImage get newsLogoLight =>
       const AssetGenImage('assets/images/news_logo_light.png');
 
+  /// File path: assets/images/old_man.png
+  AssetGenImage get oldMan => const AssetGenImage('assets/images/old_man.png');
+
+  /// File path: assets/images/science.png
+  AssetGenImage get science => const AssetGenImage('assets/images/science.png');
+
+  /// File path: assets/images/science_dark.png
+  AssetGenImage get scienceDark =>
+      const AssetGenImage('assets/images/science_dark.png');
+
+  /// File path: assets/images/sport.png
+  AssetGenImage get sport => const AssetGenImage('assets/images/sport.png');
+
+  /// File path: assets/images/sport_dark.png
+  AssetGenImage get sportDark =>
+      const AssetGenImage('assets/images/sport_dark.png');
+
+  /// File path: assets/images/technology.png
+  AssetGenImage get technology =>
+      const AssetGenImage('assets/images/technology.png');
+
+  /// File path: assets/images/technology_dark.png
+  AssetGenImage get technologyDark =>
+      const AssetGenImage('assets/images/technology_dark.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     splash,
     splashDark,
+    busniess,
+    busniessDark,
+    entertainment,
+    entertainmentDark,
+    general,
+    generalDark,
+    helth,
+    helthDark,
+    newsBranding,
+    newsBrandingLightMode,
     newsLogoDark,
     newsLogoLight,
+    oldMan,
+    science,
+    scienceDark,
+    sport,
+    sportDark,
+    technology,
+    technologyDark,
   ];
 }
 
