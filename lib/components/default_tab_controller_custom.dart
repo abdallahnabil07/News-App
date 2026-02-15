@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:news/core/theme/app_colors.dart';
+import 'package:news/model/api/source_data_model.dart';
 
 import '../core/extensions/context_extensions.dart';
+import '../model/category_data.dart';
 
 class CustomDefaultTabController extends StatefulWidget {
-  const CustomDefaultTabController({super.key});
+  final CategoryData categoryData;
+  final List<SourceData> sourceDataList;
+  int currentIndex;
+  final Function(int) onTabChanged;
+
+  CustomDefaultTabController({
+    super.key,
+    required this.categoryData,
+    required this.sourceDataList,
+    required this.currentIndex,
+    required this.onTabChanged,
+  });
 
   @override
   State<CustomDefaultTabController> createState() =>
@@ -13,20 +26,14 @@ class CustomDefaultTabController extends StatefulWidget {
 
 class _CustomDefaultTabControllerState
     extends State<CustomDefaultTabController> {
-  int _currentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 8,
+      length: widget.sourceDataList.length,
       child: Theme(
         data: Theme.of(context).copyWith(splashFactory: NoSplash.splashFactory),
         child: TabBar(
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
+          onTap: widget.onTabChanged,
           tabAlignment: TabAlignment.start,
           isScrollable: true,
           dividerColor: Colors.transparent,
@@ -38,10 +45,10 @@ class _CustomDefaultTabControllerState
             horizontal: context.paddingWidth14,
             vertical: context.paddingHeight14,
           ),
-          tabs: List.generate(8, (index) {
-            bool isSelected = _currentIndex == index;
+          tabs: List.generate(widget.sourceDataList.length, (index) {
+            bool isSelected = widget.currentIndex == index;
             return Text(
-              "Data",
+              widget.sourceDataList[index].name,
               style: context.textTheme.bodySmall!.copyWith(
                 fontSize: isSelected ? 16 : 14,
                 fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,

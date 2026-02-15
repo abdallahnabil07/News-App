@@ -44,40 +44,42 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       drawer: DrawerCustom(onTap: _goToHome),
       body: selectedCategory == null
-          ? SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  //Text
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: context.paddingWidth16,
-                      vertical: context.paddingHeight16,
-                    ),
-                    child: Text(
-                      "Good Morning\nHere is Some News For You",
-                      style: context.textTheme.bodyLarge!.copyWith(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w500,
-                        color: context.isDark
-                            ? AppColors.primaryColorLight
-                            : AppColors.primaryColorDark,
-                      ),
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //Text
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: context.paddingWidth16,
+                    vertical: context.paddingHeight16,
+                  ),
+                  child: Text(
+                    "Good Morning\nHere is Some News For You",
+                    style: context.textTheme.bodyLarge!.copyWith(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                      color: context.isDark
+                          ? AppColors.primaryColorLight
+                          : AppColors.primaryColorDark,
                     ),
                   ),
-                  ...List.generate(CategoryList.categories.length, (index) {
-                    return CategoryContainerCustom(
-                      onTab: _onCategoryTap,
-                      isLeft: index % 2 == 0,
-                      categoryData: CategoryList.categories[index],
-                    );
-                  }),
-                  SizedBox(height: context.paddingHeight16),
-                ],
-              ),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemBuilder: (context, index) {
+                      return CategoryContainerCustom(
+                        onTab: _onCategoryTap,
+                        isLeft: index % 2 == 0,
+                        categoryData: CategoryList.categories[index],
+                      );
+                    },
+                    itemCount: CategoryList.categories.length,
+                  ),
+                ),
+              ],
             )
-          : PageNewsData(),
+          : PageNewsData(categoryData: selectedCategory!),
     );
   }
 
