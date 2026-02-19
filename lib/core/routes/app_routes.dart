@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news/home_screen.dart';
 
+import '../../modules/view/home_screen.dart';
 import 'app_routes_name.dart';
 
 abstract class AppRoutes {
