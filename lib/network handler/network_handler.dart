@@ -28,12 +28,17 @@ class NetworkHandler {
     }
   }
 
-  static Future<List<ArticlesDataModel>> getNews(String articlesId) async {
+  static Future<List<ArticlesDataModel>> getNews(
+    String articlesId, {
+    int page = 1,
+  }) async {
     List<ArticlesDataModel> articlesList = [];
     try {
       Map<String, dynamic> queryParameters = {
         "apiKey": ApiConstants.apiKey,
         "sources": articlesId,
+        "page": page.toString(),
+        "pageSize": "10",
       };
       var response = await http.get(
         Uri.http(ApiConstants.domain, EndPoints.getNews, queryParameters),

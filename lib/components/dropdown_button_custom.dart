@@ -4,10 +4,10 @@ import '../core/extensions/context_extensions.dart';
 import '../core/gen/assets.gen.dart';
 import '../core/theme/app_colors.dart';
 
-class DropdownButtonCustom extends StatefulWidget {
-  final String value;
-  final List<DropdownMenuItem<String>>? lists;
-  final ValueChanged<String?>? onChange;
+class DropdownButtonCustom<T> extends StatefulWidget {
+  final T value;
+  final List<DropdownMenuItem<T>>? lists;
+  final ValueChanged<T?>? onChange;
 
   const DropdownButtonCustom({
     super.key,
@@ -17,10 +17,11 @@ class DropdownButtonCustom extends StatefulWidget {
   });
 
   @override
-  State<DropdownButtonCustom> createState() => _DropdownButtonCustomState();
+  State<DropdownButtonCustom<T>> createState() =>
+      _DropdownButtonCustomState<T>();
 }
 
-class _DropdownButtonCustomState extends State<DropdownButtonCustom> {
+class _DropdownButtonCustomState<T> extends State<DropdownButtonCustom<T>> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -33,7 +34,7 @@ class _DropdownButtonCustomState extends State<DropdownButtonCustom> {
           border: Border.all(color: AppColors.primaryColorLight, width: 1),
           borderRadius: BorderRadius.circular(16),
         ),
-        child: DropdownButton<String>(
+        child: DropdownButton<T>(
           style: context.textTheme.bodyMedium!.copyWith(
             fontSize: 20,
             color: AppColors.primaryColorLight,

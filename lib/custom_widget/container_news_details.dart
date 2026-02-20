@@ -1,27 +1,31 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
+import 'package:news/custom_widget/date_utils_custom.dart';
 
+import '../components/bottom_sheet_custom.dart';
 import '../core/extensions/context_extensions.dart';
 import '../core/theme/app_colors.dart';
 import '../model/api/articles_data_model.dart';
 
-class ContainerNewsDetails extends StatefulWidget {
+class ContainerNewsDetails extends StatelessWidget {
   final ArticlesDataModel articlesDataModel;
 
   const ContainerNewsDetails({super.key, required this.articlesDataModel});
 
   @override
-  State<ContainerNewsDetails> createState() => _ContainerNewsDetailsState();
-}
-
-class _ContainerNewsDetailsState extends State<ContainerNewsDetails> {
-  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: context.paddingWidth10),
       child: Bounceable(
-        onTap: () {},
+        onTap: () {
+          showModalBottomSheet(
+            backgroundColor: Colors.transparent,
+            context: context,
+            builder: (_) =>
+                BottomSheetCustom(articlesDataModel: articlesDataModel),
+          );
+        },
         child: Container(
           width: context.width * 0.94,
           padding: EdgeInsets.all(8),
@@ -40,14 +44,14 @@ class _ContainerNewsDetailsState extends State<ContainerNewsDetails> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               //image
-              if (widget.articlesDataModel.urlToImage.isNotEmpty)
+              if (articlesDataModel.urlToImage.isNotEmpty)
                 ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: SizedBox(
                     height: 200,
                     width: double.infinity,
                     child: CachedNetworkImage(
-                      imageUrl: widget.articlesDataModel.urlToImage,
+                      imageUrl: articlesDataModel.urlToImage,
                       imageBuilder: (context, imageProvider) => Container(
                         decoration: BoxDecoration(
                           image: DecorationImage(
@@ -67,7 +71,7 @@ class _ContainerNewsDetailsState extends State<ContainerNewsDetails> {
               //details
               Text(
                 textAlign: TextAlign.start,
-                widget.articlesDataModel.title,
+                articlesDataModel.title,
                 style: context.textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w700,
                   fontSize: 16,
@@ -81,7 +85,7 @@ class _ContainerNewsDetailsState extends State<ContainerNewsDetails> {
                 children: [
                   //by...
                   Text(
-                    widget.articlesDataModel.sourceName,
+                    articlesDataModel.sourceName,
                     style: context.textTheme.bodySmall!.copyWith(
                       color: AppColors.greyColor,
                       fontSize: 12,
@@ -90,7 +94,7 @@ class _ContainerNewsDetailsState extends State<ContainerNewsDetails> {
                   ),
                   //time
                   Text(
-                    widget.articlesDataModel.publishedAt,
+                    DateUtilsCustom.formatDate(articlesDataModel.publishedAt),
                     style: context.textTheme.bodySmall!.copyWith(
                       color: AppColors.greyColor,
                       fontSize: 12,

@@ -20,12 +20,28 @@ class PageNewsData extends StatefulWidget {
 
 class _PageNewsDataState extends State<PageNewsData> {
   late final HomeViewModel homeViewModel;
+  final controller = ScrollController();
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   void initState() {
-    homeViewModel = Provider.of<HomeViewModel>(context, listen: false);
-    homeViewModel.getAllSources(widget.categoryData.id);
     super.initState();
+    homeViewModel = Provider.of<HomeViewModel>(context, listen: false);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+
+    homeViewModel.getAllSources(widget.categoryData.id);
+    });
+    controller.addListener(() {
+      if (controller.position.pixels >=
+          controller.position.maxScrollExtent - 200) {
+        homeViewModel.loadMore();
+      }
+    });
   }
 
   @override
@@ -75,13 +91,37 @@ class _PageNewsDataState extends State<PageNewsData> {
                       ),
                     );
                   }
-                  return ListView.builder(
-                    itemCount: viewModel.articles.length,
-                    itemBuilder: (context, index) {
-                      return ContainerNewsDetails(
-                        articlesDataModel: viewModel.articles[index],
-                      );
-                    },
+                  return RefreshIndicator(
+                    elevation: 20,
+                    backgroundColor: context.isDark
+                        ? AppColors.primaryColorLight
+                        : AppColors.primaryColorDark,
+                    color: context.isDark
+                        ? AppColors.primaryColorDark
+                        : AppColors.primaryColorLight,
+                    onRefresh: viewModel.refresh,
+                    child: ListView.builder(
+                      controller: controller,
+                      itemCount: viewModel.hasMore
+                          ? viewModel.articles.length + 1
+                          : viewModel.articles.length,
+                      itemBuilder: (context, index) {
+                        if (index < viewModel.articles.length) {
+                          return ContainerNewsDetails(
+                            articlesDataModel: viewModel.articles[index],
+                          );
+                        } else {
+                          return viewModel.isLoadingMore
+                              ? Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          )
+                              : const Center(child: Text("No more news"),);
+                        }
+                      },
+                    ),
                   );
                 },
               ),

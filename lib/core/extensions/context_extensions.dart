@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/app_setting_provider.dart';
 
 extension ContextExtensions on BuildContext {
   double get width => MediaQuery.of(this).size.width;
@@ -6,6 +9,8 @@ extension ContextExtensions on BuildContext {
   double get height => MediaQuery.of(this).size.height;
 
   TextTheme get textTheme => Theme.of(this).textTheme;
+
+  AppSettingProvider get provider => Provider.of<AppSettingProvider>(this);
 
   bool get isDark => Theme.of(this).brightness == Brightness.dark;
 
