@@ -97,7 +97,7 @@ class ContainerNewsDetails extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: context.isDark
                           ? AppColors.primaryColorDark
-                          : AppColors.primaryColorDark,
+                          : AppColors.primaryColorLight,
                     ),
                   ),
                 },
