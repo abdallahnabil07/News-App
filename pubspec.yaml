@@ -25,6 +25,7 @@ dependencies:
   bloc: ^9.2.0
   shimmer_flutter: ^1.0.1
   url_launcher: ^6.2.5
+  highlight_text: ^1.8.0
 
 
 dev_dependencies:

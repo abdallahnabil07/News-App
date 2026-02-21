@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
+import 'package:highlight_text/highlight_text.dart';
 import 'package:news/custom_widget/date_utils_custom.dart';
 
 import '../components/bottom_sheet_custom.dart';
@@ -10,11 +11,22 @@ import '../model/api/articles_data_model.dart';
 
 class ContainerNewsDetails extends StatelessWidget {
   final ArticlesDataModel articlesDataModel;
+  final String searchQuery;
 
-  const ContainerNewsDetails({super.key, required this.articlesDataModel});
+  const ContainerNewsDetails({
+    super.key,
+    required this.articlesDataModel,
+    required this.searchQuery,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final colorCircularProgressBackground = context.isDark
+        ? AppColors.primaryColorLight
+        : AppColors.primaryColorDark;
+    final colorCircularProgress = context.isDark
+        ? AppColors.darkGreyColor
+        : AppColors.lightGreyColor;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: context.paddingWidth10),
       child: Bounceable(
@@ -62,17 +74,34 @@ class ContainerNewsDetails extends StatelessWidget {
                       ),
                       placeholder: (context, url) => SizedBox(
                         height: 200,
-                        child: Center(child: CircularProgressIndicator()),
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            backgroundColor: colorCircularProgressBackground,
+                            color: colorCircularProgress,
+                          ),
+                        ),
                       ),
                       errorWidget: (context, url, error) => Icon(Icons.error),
                     ),
                   ),
                 ),
               //details
-              Text(
-                textAlign: TextAlign.start,
-                articlesDataModel.title,
-                style: context.textTheme.bodyMedium!.copyWith(
+              TextHighlight(
+                text: articlesDataModel.title,
+                words: {
+                  searchQuery: HighlightedWord(
+                    textStyle: TextStyle(
+                      backgroundColor: context.isDark
+                          ? AppColors.lightGreyColor
+                          : AppColors.darkGreyColor,
+                      fontWeight: FontWeight.bold,
+                      color: context.isDark
+                          ? AppColors.primaryColorDark
+                          : AppColors.primaryColorDark,
+                    ),
+                  ),
+                },
+                textStyle: context.textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w700,
                   fontSize: 16,
                   color: context.isDark

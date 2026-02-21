@@ -6,6 +6,12 @@ import 'package:news/network%20handler/network_handler.dart';
 import '../../model/category_data.dart';
 
 class HomeViewModel extends ChangeNotifier {
+  bool _isSearching = false;
+  String _searchQuery = "";
+  List<ArticlesDataModel> _filterArticles = [];
+
+  List<ArticlesDataModel> get articlesShow =>
+      _isSearching ? _filterArticles : _articles;
   int _selectedTapIndex = 0;
 
   String _selectCountry = "Egypt";
@@ -26,6 +32,8 @@ class HomeViewModel extends ChangeNotifier {
 
   int get currentIndex => _selectedTapIndex;
 
+  bool get isSearching => _isSearching;
+
   String get selectCountry => _selectCountry;
 
   ThemeMode get selectTheme => _selectTheme;
@@ -39,6 +47,10 @@ class HomeViewModel extends ChangeNotifier {
   List<ArticlesDataModel> _articles = [];
 
   List<ArticlesDataModel> get articles => _articles;
+
+  List<ArticlesDataModel> get filterArticles => _filterArticles;
+
+  String get searchQuery => _searchQuery;
 
   // get sources from NetworkHandel
   Future<void> getAllSources(String categoryId) async {
@@ -103,6 +115,9 @@ class HomeViewModel extends ChangeNotifier {
     if (isLoadingMore || !hasMore) return;
     isLoadingMore = true;
     final newArticle = await getAllArticles(page: page + 1);
+    if (isSearching) {
+      hasMore = false;
+    }
     if (newArticle.isEmpty) {
       hasMore = false;
     } else {
@@ -143,6 +158,46 @@ class HomeViewModel extends ChangeNotifier {
   void goToHome(BuildContext context) {
     _selectedCategory = null;
     Navigator.pop(context);
+    notifyListeners();
+  }
+
+  //close search
+  void onTapXIconSearching(TextEditingController searchController) {
+    _isSearching = false;
+    _searchQuery = "";
+    _filterArticles = [];
+    searchController.clear();
+    notifyListeners();
+  }
+
+  //tap on search icon (suffixIcon)
+  void onTapIconSearching() {
+    _isSearching = !_isSearching;
+    notifyListeners();
+  }
+
+  //search logic
+  void startSearching() {
+    _isSearching = true;
+    _filterArticles = _articles;
+    notifyListeners();
+  }
+
+  //
+  void onSearchTextChange(String text) {
+    _searchQuery = text;
+    if (text.isEmpty) {
+      _filterArticles = articles;
+      hasMore = true;
+    } else {
+      _filterArticles = articles
+          .where(
+            (articles) =>
+                articles.title.toLowerCase().contains(text.toLowerCase()),
+          )
+          .toList();
+      hasMore = _filterArticles.length >= 3;
+    }
     notifyListeners();
   }
 }

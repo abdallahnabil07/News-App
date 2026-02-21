@@ -14,7 +14,10 @@ class CustomTextField extends StatefulWidget {
   final Color? fillColor;
   final Color? borderColor;
   final Color? focusedBorderColor;
+  final double? width;
+  final double? height;
   final FormFieldValidator<String>? validator;
+  final void Function(String)? onChanged;
 
   const CustomTextField({
     super.key,
@@ -27,6 +30,9 @@ class CustomTextField extends StatefulWidget {
     this.validator,
     this.prefixIcon,
     this.suffixIcon,
+    this.width,
+    this.height,
+    this.onChanged,
   });
 
   @override
@@ -50,43 +56,64 @@ class _CustomTextFieldState extends State<CustomTextField> {
         widget.focusedBorderColor ??
         (context.isDark ? AppColors.lightGreyColor : AppColors.darkGreyColor);
 
-    return TextFormField(
-      validator: widget.validator,
-      maxLines: widget.maxLine,
-      controller: widget.controller,
-      keyboardType: TextInputType.text,
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: fillColor,
-
-        prefixIcon: widget.prefixIcon,
-
-        suffixIcon: widget.suffixIcon,
-
-        hintText: widget.hintText,
-        hintStyle: context.textTheme.titleMedium!.copyWith(
+    return SizedBox(
+      width: widget.width,
+      height: widget.height,
+      child: TextFormField(
+        onChanged: widget.onChanged,
+        validator: widget.validator,
+        maxLines: widget.maxLine,
+        controller: widget.controller,
+        keyboardType: TextInputType.text,
+        style: context.textTheme.titleMedium!.copyWith(
           color: context.isDark
               ? AppColors.lightGreyColor
               : AppColors.darkGreyColor,
-          fontSize: 14,
+          fontSize: 16,
           fontWeight: FontWeight.w400,
         ),
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: fillColor,
+          prefixIcon: widget.prefixIcon,
+          prefixIconConstraints: BoxConstraints(
+            minWidth: 34,
+            minHeight: 34,
+            maxWidth: 40,
+            maxHeight: 40,
+          ),
+          suffixIcon: widget.suffixIcon,
+          suffixIconConstraints: BoxConstraints(
+            minWidth: 24,
+            minHeight: 24,
+            maxWidth: 34,
+            maxHeight: 34,
+          ),
+          hintText: widget.hintText,
+          hintStyle: context.textTheme.titleMedium!.copyWith(
+            color: context.isDark
+                ? AppColors.lightGreyColor
+                : AppColors.darkGreyColor,
+            fontSize: 20,
+            fontWeight: FontWeight.w400,
+          ),
 
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: borderColor, width: 2),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: borderColor, width: 2),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: focusedBorderColor, width: 2),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: AppColors.redColor, width: 2),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide(color: borderColor, width: 1),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide(color: borderColor, width: 1),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide(color: focusedBorderColor, width: 1),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide(color: AppColors.redColor, width: 1),
+          ),
         ),
       ),
     );

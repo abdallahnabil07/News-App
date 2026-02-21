@@ -43,6 +43,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/theme_icon.svg
   SvgGenImage get themeIcon => const SvgGenImage('assets/icons/theme_icon.svg');
 
+  /// File path: assets/icons/x_icon.svg
+  SvgGenImage get xIcon => const SvgGenImage('assets/icons/x_icon.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
     arrowDown,
@@ -53,6 +56,7 @@ class $AssetsIconsGen {
     languageIcon,
     search,
     themeIcon,
+    xIcon,
   ];
 }
 

@@ -33,11 +33,10 @@ class _PageNewsDataState extends State<PageNewsData> {
     super.initState();
     homeViewModel = Provider.of<HomeViewModel>(context, listen: false);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-
-    homeViewModel.getAllSources(widget.categoryData.id);
+      homeViewModel.getAllSources(widget.categoryData.id);
     });
     controller.addListener(() {
-      if (controller.position.pixels >=
+      if (!homeViewModel.isSearching && controller.position.pixels >=
           controller.position.maxScrollExtent - 200) {
         homeViewModel.loadMore();
       }
@@ -46,12 +45,20 @@ class _PageNewsDataState extends State<PageNewsData> {
 
   @override
   Widget build(BuildContext context) {
+    final colorRefreshAndCircularProgressBackground = context.isDark
+        ? AppColors.primaryColorLight
+        : AppColors.primaryColorDark;
+    final colorCircularProgress = context.isDark
+        ? AppColors.darkGreyColor
+        : AppColors.lightGreyColor;
     return Consumer<HomeViewModel>(
       builder: (context, viewModel, _) {
         return Column(
           children: [
             //TAB BAR
-            CustomDefaultTabController(
+            homeViewModel.isSearching
+                ? SizedBox(height: context.paddingHeight16,)
+                : CustomDefaultTabController(
               categoryData: widget.categoryData,
               sourceDataList: viewModel.sourceData,
               currentIndex: viewModel.currentIndex,
@@ -78,7 +85,7 @@ class _PageNewsDataState extends State<PageNewsData> {
                       ),
                     );
                   }
-                  if (viewModel.articles.isEmpty) {
+                  if (viewModel.articlesShow.isEmpty) {
                     return Center(
                       child: Text(
                         "No news",
@@ -92,33 +99,35 @@ class _PageNewsDataState extends State<PageNewsData> {
                     );
                   }
                   return RefreshIndicator(
-                    elevation: 20,
-                    backgroundColor: context.isDark
-                        ? AppColors.primaryColorLight
-                        : AppColors.primaryColorDark,
+                    backgroundColor: colorRefreshAndCircularProgressBackground,
                     color: context.isDark
                         ? AppColors.primaryColorDark
                         : AppColors.primaryColorLight,
                     onRefresh: viewModel.refresh,
                     child: ListView.builder(
                       controller: controller,
-                      itemCount: viewModel.hasMore
-                          ? viewModel.articles.length + 1
-                          : viewModel.articles.length,
+                      itemCount: viewModel.hasMore && !viewModel.isSearching
+                          ? viewModel.articlesShow.length + 1
+                          : viewModel.articlesShow.length,
                       itemBuilder: (context, index) {
-                        if (index < viewModel.articles.length) {
+                        if (index < viewModel.articlesShow.length) {
                           return ContainerNewsDetails(
-                            articlesDataModel: viewModel.articles[index],
+                            articlesDataModel: viewModel.articlesShow[index],
+                            searchQuery: viewModel.searchQuery,
                           );
                         } else {
-                          return viewModel.isLoadingMore
+                          return viewModel.hasMore
                               ? Padding(
                             padding: EdgeInsets.all(16),
                             child: Center(
-                              child: CircularProgressIndicator(),
+                              child: CircularProgressIndicator(
+                                backgroundColor:
+                                colorRefreshAndCircularProgressBackground,
+                                color: colorCircularProgress,
+                              ),
                             ),
                           )
-                              : const Center(child: Text("No more news"),);
+                              : const SizedBox();
                         }
                       },
                     ),
