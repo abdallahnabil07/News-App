@@ -2,12 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:highlight_text/highlight_text.dart';
+import 'package:news/components/bottom_sheet_custom.dart';
+import 'package:news/core/extensions/context_extensions.dart';
+import 'package:news/core/theme/app_colors.dart';
 import 'package:news/custom_widget/date_utils_custom.dart';
-
-import '../components/bottom_sheet_custom.dart';
-import '../core/extensions/context_extensions.dart';
-import '../core/theme/app_colors.dart';
-import '../model/api/articles_data_model.dart';
+import 'package:news/model/api/articles_data_model.dart';
 
 class ContainerNewsDetails extends StatelessWidget {
   final ArticlesDataModel articlesDataModel;
@@ -60,7 +59,7 @@ class ContainerNewsDetails extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: SizedBox(
-                    height: 200,
+                    height: context.hg(200),
                     width: double.infinity,
                     child: CachedNetworkImage(
                       imageUrl: articlesDataModel.urlToImage,
@@ -73,7 +72,7 @@ class ContainerNewsDetails extends StatelessWidget {
                         ),
                       ),
                       placeholder: (context, url) => SizedBox(
-                        height: 200,
+                        height: context.hg(200),
                         child: Center(
                           child: CircularProgressIndicator(
                             backgroundColor: colorCircularProgressBackground,
@@ -103,7 +102,7 @@ class ContainerNewsDetails extends StatelessWidget {
                 },
                 textStyle: context.textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w700,
-                  fontSize: 16,
+                  fontSize: context.hg(16),
                   color: context.isDark
                       ? AppColors.primaryColorLight
                       : AppColors.primaryColorDark,
@@ -117,7 +116,7 @@ class ContainerNewsDetails extends StatelessWidget {
                     articlesDataModel.sourceName,
                     style: context.textTheme.bodySmall!.copyWith(
                       color: AppColors.greyColor,
-                      fontSize: 12,
+                      fontSize: context.hg(12),
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -126,7 +125,7 @@ class ContainerNewsDetails extends StatelessWidget {
                     DateUtilsCustom.formatDate(articlesDataModel.publishedAt),
                     style: context.textTheme.bodySmall!.copyWith(
                       color: AppColors.greyColor,
-                      fontSize: 12,
+                      fontSize: context.hg(12),
                       fontWeight: FontWeight.w500,
                     ),
                   ),

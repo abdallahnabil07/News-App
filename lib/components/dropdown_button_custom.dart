@@ -36,7 +36,7 @@ class _DropdownButtonCustomState<T> extends State<DropdownButtonCustom<T>> {
         ),
         child: DropdownButton<T>(
           style: context.textTheme.bodyMedium!.copyWith(
-            fontSize: 20,
+            fontSize: context.hg(20),
             color: AppColors.primaryColorLight,
             fontWeight: FontWeight.w500,
           ),

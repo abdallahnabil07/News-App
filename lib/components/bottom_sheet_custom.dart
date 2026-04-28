@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:news/components/custom_elevated_button.dart';
 import 'package:news/core/extensions/context_extensions.dart';
 import 'package:news/core/theme/app_colors.dart';
+import 'package:news/model/api/articles_data_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../model/api/articles_data_model.dart';
 
 class BottomSheetCustom extends StatelessWidget {
   final ArticlesDataModel articlesDataModel;
@@ -51,7 +51,7 @@ class BottomSheetCustom extends StatelessWidget {
                         ),
                       ),
                       placeholder: (context, url) => SizedBox(
-                        height: 200,
+                        height: context.hg(200),
                         child: Center(child: CircularProgressIndicator()),
                       ),
                       errorWidget: (context, url, error) => Icon(Icons.error),
@@ -63,7 +63,7 @@ class BottomSheetCustom extends StatelessWidget {
                     textAlign: TextAlign.start,
                     articlesDataModel.description,
                     style: context.textTheme.bodyMedium!.copyWith(
-                      fontSize: 14,
+                      fontSize: context.hg(14),
                       fontWeight: FontWeight.w500,
                       color: context.isDark
                           ? AppColors.primaryColorDark

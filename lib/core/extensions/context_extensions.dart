@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../provider/app_setting_provider.dart';
 
 extension ContextExtensions on BuildContext {
-  double get width => MediaQuery.of(this).size.width;
-
-  double get height => MediaQuery.of(this).size.height;
-
-  TextTheme get textTheme => Theme.of(this).textTheme;
-
-  AppSettingProvider get provider => Provider.of<AppSettingProvider>(this);
-
   bool get isDark => Theme.of(this).brightness == Brightness.dark;
 
   bool get isLight => Theme.of(this).brightness == Brightness.light;
+
+  double get height => MediaQuery.of(this).size.height;
+
+  double get width => MediaQuery.of(this).size.width;
+
+  // responsive height
+  double hg(double n) {
+    final h = MediaQuery.of(this).size.height;
+    return n * (h / 880);
+  }
+
+  // responsive width
+  double wd(double n) {
+    final w = MediaQuery.of(this).size.width;
+    return n * (w / 390);
+  }
 
   double get paddingHeight4 => width * 0.0045;
 
@@ -47,28 +52,6 @@ extension ContextExtensions on BuildContext {
   double get paddingHeight32 => height * 0.036;
 
   double get paddingHeight34 => height * 0.038;
-
-  EdgeInsets get paddingAll4Height => EdgeInsets.all(paddingHeight4);
-
-  EdgeInsets get paddingAll6Height => EdgeInsets.all(paddingHeight6);
-
-  EdgeInsets get paddingAll8Height => EdgeInsets.all(paddingHeight8);
-
-  EdgeInsets get paddingAll10Height => EdgeInsets.all(paddingHeight10);
-
-  EdgeInsets get paddingAll12Height => EdgeInsets.all(paddingHeight12);
-
-  EdgeInsets get paddingAll14Height => EdgeInsets.all(paddingHeight14);
-
-  EdgeInsets get paddingAll16Height => EdgeInsets.all(paddingHeight16);
-
-  EdgeInsets get paddingAll18Height => EdgeInsets.all(paddingHeight18);
-
-  EdgeInsets get paddingAll20Height => EdgeInsets.all(paddingHeight20);
-
-  EdgeInsets get paddingAll22Height => EdgeInsets.all(paddingHeight22);
-
-  EdgeInsets get paddingAll24Height => EdgeInsets.all(paddingHeight24);
 
   double get paddingWidth4 => width * 0.010;
 
@@ -104,25 +87,17 @@ extension ContextExtensions on BuildContext {
 
   double get paddingWidth36 => width * 0.092;
 
-  EdgeInsets get paddingAll4Width => EdgeInsets.all(paddingWidth4);
+  // // responsive font size using textScaler
+  // double fs(double fontSize, {double baseWidth = 390}) {
+  //   final w = MediaQuery.of(this).size.width;
+  //   final scaler = MediaQuery.textScalerOf(this);
+  //
+  //   // 1. احسب الحجم المتناسب مع عرض الشاشة
+  //   final responsiveSize = fontSize * (w / baseWidth);
+  //
+  //   return scaler.scale(responsiveSize);
+  // }
 
-  EdgeInsets get paddingAll6Width => EdgeInsets.all(paddingWidth6);
-
-  EdgeInsets get paddingAll8Width => EdgeInsets.all(paddingWidth8);
-
-  EdgeInsets get paddingAll10Width => EdgeInsets.all(paddingWidth10);
-
-  EdgeInsets get paddingAll12Width => EdgeInsets.all(paddingWidth12);
-
-  EdgeInsets get paddingAll14Width => EdgeInsets.all(paddingWidth14);
-
-  EdgeInsets get paddingAll16Width => EdgeInsets.all(paddingWidth16);
-
-  EdgeInsets get paddingAll18Width => EdgeInsets.all(paddingWidth18);
-
-  EdgeInsets get paddingAll20Width => EdgeInsets.all(paddingWidth20);
-
-  EdgeInsets get paddingAll22Width => EdgeInsets.all(paddingWidth22);
-
-  EdgeInsets get paddingAll24Width => EdgeInsets.all(paddingWidth24);
+  // textTheme shortcut
+  TextTheme get textTheme => Theme.of(this).textTheme;
 }

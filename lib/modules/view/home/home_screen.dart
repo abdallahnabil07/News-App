@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news/components/custom_text_field.dart';
+import 'package:news/components/drawer_custom.dart';
 import 'package:news/core/extensions/context_extensions.dart';
 import 'package:news/core/gen/assets.gen.dart';
+import 'package:news/core/id/injection.dart';
 import 'package:news/core/theme/app_colors.dart';
+import 'package:news/custom_widget/category_container_custom.dart';
 import 'package:news/model/category_list.dart';
-import 'package:news/modules/view%20model/home_view_model.dart';
+import 'package:news/modules/cubit/home/home_cubit.dart';
+import 'package:news/modules/cubit/news/news_state.dart';
 import 'package:news/modules/view/page_news_data.dart';
-import 'package:provider/provider.dart';
-
-import '../../components/drawer_custom.dart';
-import '../../custom_widget/category_container_custom.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,6 +22,15 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController searchController = TextEditingController();
+  late final HomeCubit _homeCubit;
+  late final NewsCubit _newsCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    _homeCubit = HomeCubit();
+    _newsCubit = getIt<NewsCubit>();
+  }
 
   @override
   void dispose() {
@@ -30,31 +40,37 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => HomeViewModel(),
-      child: Consumer<HomeViewModel>(
-        builder: (context, homeViewModel, _) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: _homeCubit),
+        BlocProvider.value(value: _newsCubit),
+      ],
+      child: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          final cubit = context.watch<HomeCubit>();
+
           return Scaffold(
             appBar: AppBar(
-              title: homeViewModel.isSearching
+              automaticallyImplyLeading: !state.isSearching,
+              title: state.isSearching
                   ? CustomTextField(
+                      onChanged: (value) {
+                        context.read<NewsCubit>().onSearch(value);
+                      },
                       width: double.infinity,
-                      height: 50,
+                      height: context.hg(50),
                       hintText: "Search..",
                       fillColor: Colors.transparent,
                       borderColor: context.isDark
                           ? AppColors.primaryColorLight
                           : AppColors.primaryColorDark,
                       controller: searchController,
-                      onChanged: (text) {
-                        homeViewModel.onSearchTextChange(text);
-                      },
+
                       prefixIcon: Padding(
                         padding: EdgeInsets.only(
                           left: context.paddingWidth16,
                           right: context.paddingWidth8,
                         ),
-
                         child: Assets.icons.search.svg(
                           colorFilter: ColorFilter.mode(
                             context.isDark
@@ -64,12 +80,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-
                       suffixIcon: Padding(
                         padding: EdgeInsets.only(right: context.paddingWidth16),
                         child: Bounceable(
                           onTap: () {
-                            homeViewModel.onTapXIconSearching(searchController);
+                            searchController.clear();
+                            context.read<NewsCubit>().stopSearch();
+                            cubit.toggleSearch();
                           },
                           child: Assets.icons.xIcon.svg(
                             colorFilter: ColorFilter.mode(
@@ -82,19 +99,23 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     )
-                  : Text(homeViewModel.selectedCategory?.name ?? "Home"),
-              actions:
-                  homeViewModel.isSearching ||
-                      homeViewModel.selectedCategory == null
+                  : Text(state.selectedCategory?.name ?? "Home"),
+              actions: state.isSearching || state.selectedCategory == null
                   ? []
                   : [
-                      //search icon
+                      //Icon Search
                       Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: context.paddingWidth16,
                         ),
                         child: Bounceable(
-                          onTap: homeViewModel.onTapIconSearching,
+                          onTap: () {
+                            final newsCubit = context.read<NewsCubit>();
+                            final homeCubit = context.read<HomeCubit>();
+
+                            newsCubit.startSearch();
+                            homeCubit.toggleSearch();
+                          },
                           child: Assets.icons.search.svg(
                             colorFilter: ColorFilter.mode(
                               context.isDark
@@ -107,19 +128,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
             ),
-            drawer: homeViewModel.isSearching
+            drawer: state.isSearching
                 ? null
                 : DrawerCustom(
                     onTap: () {
-                      homeViewModel.goToHome(context);
+                      cubit.goHome();
+                      Navigator.pop(context);
                     },
                   ),
-            body: homeViewModel.selectedCategory == null
+            body: state.selectedCategory == null
                 ? Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      //Text
                       Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: context.paddingWidth16,
@@ -128,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Text(
                           "Good Morning\nHere is Some News For You",
                           style: context.textTheme.bodyLarge!.copyWith(
-                            fontSize: 24,
+                            fontSize: context.hg(24),
                             fontWeight: FontWeight.w500,
                             color: context.isDark
                                 ? AppColors.primaryColorLight
@@ -138,21 +159,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Expanded(
                         child: ListView.builder(
+                          itemCount: CategoryList.categories.length,
                           itemBuilder: (context, index) {
                             return CategoryContainerCustom(
-                              onTab: (category) {
-                                homeViewModel.onCategoryTap(category);
-                              },
+                              onTab: cubit.selectCategory,
                               isLeft: index % 2 == 0,
                               categoryData: CategoryList.categories[index],
                             );
                           },
-                          itemCount: CategoryList.categories.length,
                         ),
                       ),
                     ],
                   )
-                : PageNewsData(categoryData: homeViewModel.selectedCategory!),
+                : PageNewsData(categoryData: state.selectedCategory!),
           );
         },
       ),

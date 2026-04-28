@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:news/core/extensions/context_extensions.dart';
 import 'package:news/core/theme/app_colors.dart';
 import 'package:news/model/api/source_data_model.dart';
-
-import '../core/extensions/context_extensions.dart';
-import '../model/category_data.dart';
+import 'package:news/model/category_data.dart';
 
 class CustomDefaultTabController extends StatefulWidget {
   final CategoryData categoryData;
   final List<SourceData> sourceDataList;
   int currentIndex;
-  final Function(int) onTabChanged;
+  final ValueChanged<int>? onTabChanged;
 
   CustomDefaultTabController({
     super.key,
@@ -50,7 +49,7 @@ class _CustomDefaultTabControllerState
             return Text(
               widget.sourceDataList[index].name,
               style: context.textTheme.bodySmall!.copyWith(
-                fontSize: isSelected ? 16 : 14,
+                fontSize: isSelected ? context.hg(14) : context.hg(12),
                 fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
                 color: context.isDark
                     ? AppColors.primaryColorLight

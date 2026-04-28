@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../core/extensions/context_extensions.dart';
-import '../core/theme/app_colors.dart';
+import 'package:news/core/extensions/context_extensions.dart';
+import 'package:news/core/theme/app_colors.dart';
 
 class CustomElevatedButton extends StatefulWidget {
   final String textButton;
@@ -52,7 +51,7 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
           style: context.textTheme.titleLarge!.copyWith(
             color: widget.textColor,
             fontWeight: FontWeight.w700,
-            fontSize: 16
+            fontSize: context.hg(16),
           ),
         ),
       ),

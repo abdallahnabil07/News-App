@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
+import 'package:news/core/extensions/context_extensions.dart';
+import 'package:news/core/gen/assets.gen.dart';
+import 'package:news/core/theme/app_colors.dart';
 import 'package:news/model/category_data.dart';
-
-import '../core/extensions/context_extensions.dart';
-import '../core/gen/assets.gen.dart';
-import '../core/theme/app_colors.dart';
 
 class CategoryContainerCustom extends StatelessWidget {
   final CategoryData categoryData;
@@ -27,7 +26,7 @@ class CategoryContainerCustom extends StatelessWidget {
       ),
       child: Container(
         width: double.infinity,
-        height: 198,
+        height: context.hg(198),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24),
           color: Colors.transparent,
@@ -52,7 +51,7 @@ class CategoryContainerCustom extends StatelessWidget {
                 Text(
                   categoryData.name,
                   style: context.textTheme.bodyLarge!.copyWith(
-                    fontSize: 34,
+                    fontSize: context.hg(34),
                     fontWeight: FontWeight.w400,
                     color: context.isDark
                         ? AppColors.primaryColorDark
@@ -112,7 +111,7 @@ class CategoryContainerCustom extends StatelessWidget {
                               color: context.isDark
                                   ? AppColors.primaryColorLight
                                   : AppColors.primaryColorDark,
-                              fontSize: 24,
+                              fontSize: context.hg(20),
                               fontWeight: FontWeight.w500,
                             ),
                           ),

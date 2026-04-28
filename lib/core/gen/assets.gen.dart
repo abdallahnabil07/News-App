@@ -116,15 +116,22 @@ class $AssetsImagesGen {
   AssetGenImage get newsLogoLight =>
       const AssetGenImage('assets/images/news_logo_light.png');
 
-  /// File path: assets/images/old_man.png
-  AssetGenImage get oldMan => const AssetGenImage('assets/images/old_man.png');
-
   /// File path: assets/images/science.png
   AssetGenImage get science => const AssetGenImage('assets/images/science.png');
 
   /// File path: assets/images/science_dark.png
   AssetGenImage get scienceDark =>
       const AssetGenImage('assets/images/science_dark.png');
+
+  /// File path: assets/images/server_error_dark_mode_processed.jpeg
+  AssetGenImage get serverErrorDarkModeProcessed => const AssetGenImage(
+    'assets/images/server_error_dark_mode_processed.jpeg',
+  );
+
+  /// File path: assets/images/server_error_light_mode_processed.jpeg
+  AssetGenImage get serverErrorLightModeProcessed => const AssetGenImage(
+    'assets/images/server_error_light_mode_processed.jpeg',
+  );
 
   /// File path: assets/images/sport.png
   AssetGenImage get sport => const AssetGenImage('assets/images/sport.png');
@@ -157,9 +164,10 @@ class $AssetsImagesGen {
     newsBrandingLightMode,
     newsLogoDark,
     newsLogoLight,
-    oldMan,
     science,
     scienceDark,
+    serverErrorDarkModeProcessed,
+    serverErrorLightModeProcessed,
     sport,
     sportDark,
     technology,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../core/extensions/context_extensions.dart';
-import '../core/theme/app_colors.dart';
+import 'package:news/core/extensions/context_extensions.dart';
+import 'package:news/core/theme/app_colors.dart';
 
 enum IconPosition { start, end }
 
@@ -69,7 +68,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           color: context.isDark
               ? AppColors.lightGreyColor
               : AppColors.darkGreyColor,
-          fontSize: 16,
+          fontSize: context.hg(16),
           fontWeight: FontWeight.w400,
         ),
         decoration: InputDecoration(
@@ -77,24 +76,24 @@ class _CustomTextFieldState extends State<CustomTextField> {
           fillColor: fillColor,
           prefixIcon: widget.prefixIcon,
           prefixIconConstraints: BoxConstraints(
-            minWidth: 34,
-            minHeight: 34,
-            maxWidth: 40,
-            maxHeight: 40,
+            minWidth: context.wd(34),
+            minHeight: context.hg(34),
+            maxWidth: context.wd(40),
+            maxHeight: context.hg(40),
           ),
           suffixIcon: widget.suffixIcon,
           suffixIconConstraints: BoxConstraints(
-            minWidth: 24,
-            minHeight: 24,
-            maxWidth: 34,
-            maxHeight: 34,
+            minWidth: context.wd(24),
+            minHeight: context.hg(24),
+            maxWidth: context.wd(34),
+            maxHeight: context.hg(34),
           ),
           hintText: widget.hintText,
           hintStyle: context.textTheme.titleMedium!.copyWith(
             color: context.isDark
                 ? AppColors.lightGreyColor
                 : AppColors.darkGreyColor,
-            fontSize: 20,
+            fontSize: context.hg(20),
             fontWeight: FontWeight.w400,
           ),
 

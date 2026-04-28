@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
-
-import '../core/extensions/context_extensions.dart';
-import '../core/gen/assets.gen.dart';
-import '../core/theme/app_colors.dart';
+import 'package:news/core/extensions/context_extensions.dart';
+import 'package:news/core/gen/assets.gen.dart';
+import 'package:news/core/theme/app_colors.dart';
 
 class RowDrawerCustom extends StatelessWidget {
   final SvgGenImage icon;
@@ -32,7 +31,7 @@ class RowDrawerCustom extends StatelessWidget {
               text,
               style: context.textTheme.bodyMedium!.copyWith(
                 color: AppColors.primaryColorLight,
-                fontSize: 20,
+                fontSize: context.hg(20),
                 fontWeight: FontWeight.w700,
               ),
             ),
