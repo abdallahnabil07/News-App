@@ -37,6 +37,14 @@ class $AssetsIconsGen {
   SvgGenImage get languageIcon =>
       const SvgGenImage('assets/icons/language_icon.svg');
 
+  /// File path: assets/icons/news_icon_dark_standalone.svg
+  SvgGenImage get newsIconDarkStandalone =>
+      const SvgGenImage('assets/icons/news_icon_dark_standalone.svg');
+
+  /// File path: assets/icons/news_logo_transparent.svg
+  SvgGenImage get newsLogoTransparent =>
+      const SvgGenImage('assets/icons/news_logo_transparent.svg');
+
   /// File path: assets/icons/search.svg
   SvgGenImage get search => const SvgGenImage('assets/icons/search.svg');
 
@@ -54,6 +62,8 @@ class $AssetsIconsGen {
     close,
     homeIcon,
     languageIcon,
+    newsIconDarkStandalone,
+    newsLogoTransparent,
     search,
     themeIcon,
     xIcon,
@@ -69,6 +79,14 @@ class $AssetsImagesGen {
   /// File path: assets/images/Splash_dark.png
   AssetGenImage get splashDark =>
       const AssetGenImage('assets/images/Splash_dark.png');
+
+  /// File path: assets/images/bookmark.png
+  AssetGenImage get bookmark =>
+      const AssetGenImage('assets/images/bookmark.png');
+
+  /// File path: assets/images/bookmark_black.png
+  AssetGenImage get bookmarkBlack =>
+      const AssetGenImage('assets/images/bookmark_black.png');
 
   /// File path: assets/images/busniess.png
   AssetGenImage get busniess =>
@@ -100,6 +118,10 @@ class $AssetsImagesGen {
   AssetGenImage get helthDark =>
       const AssetGenImage('assets/images/helth_dark.png');
 
+  /// File path: assets/images/logo_app.png
+  AssetGenImage get logoApp =>
+      const AssetGenImage('assets/images/logo_app.png');
+
   /// File path: assets/images/news_branding.png
   AssetGenImage get newsBranding =>
       const AssetGenImage('assets/images/news_branding.png');
@@ -107,6 +129,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/news_branding_light_mode.png
   AssetGenImage get newsBrandingLightMode =>
       const AssetGenImage('assets/images/news_branding_light_mode.png');
+
+  /// File path: assets/images/news_icon_dark_standalone.png
+  AssetGenImage get newsIconDarkStandalone =>
+      const AssetGenImage('assets/images/news_icon_dark_standalone.png');
 
   /// File path: assets/images/news_logo_dark.png
   AssetGenImage get newsLogoDark =>
@@ -122,16 +148,6 @@ class $AssetsImagesGen {
   /// File path: assets/images/science_dark.png
   AssetGenImage get scienceDark =>
       const AssetGenImage('assets/images/science_dark.png');
-
-  /// File path: assets/images/server_error_dark_mode_processed.jpeg
-  AssetGenImage get serverErrorDarkModeProcessed => const AssetGenImage(
-    'assets/images/server_error_dark_mode_processed.jpeg',
-  );
-
-  /// File path: assets/images/server_error_light_mode_processed.jpeg
-  AssetGenImage get serverErrorLightModeProcessed => const AssetGenImage(
-    'assets/images/server_error_light_mode_processed.jpeg',
-  );
 
   /// File path: assets/images/sport.png
   AssetGenImage get sport => const AssetGenImage('assets/images/sport.png');
@@ -152,6 +168,8 @@ class $AssetsImagesGen {
   List<AssetGenImage> get values => [
     splash,
     splashDark,
+    bookmark,
+    bookmarkBlack,
     busniess,
     busniessDark,
     entertainment,
@@ -160,14 +178,14 @@ class $AssetsImagesGen {
     generalDark,
     helth,
     helthDark,
+    logoApp,
     newsBranding,
     newsBrandingLightMode,
+    newsIconDarkStandalone,
     newsLogoDark,
     newsLogoLight,
     science,
     scienceDark,
-    serverErrorDarkModeProcessed,
-    serverErrorLightModeProcessed,
     sport,
     sportDark,
     technology,

@@ -1,0 +1,39 @@
+<svg style="" role="img" viewBox="0 0 680 680" width="100%" xmlns="http://www.w3.org/2000/svg">
+    <title
+        style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+        News app icon dark
+    </title>
+    <desc
+        style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+        Dark standalone news app icon with geometric N lettermark
+    </desc>
+
+    <defs>
+        <clipPath id="clip-main">
+            <rect height="400" rx="90" width="400" x="140" y="40" />
+        </clipPath>
+    </defs>
+
+    <!-- Icon background -->
+    <rect style="fill:rgb(30, 30, 30);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto" fill="#1e1e1e" height="400" rx="90" width="400" x="140"
+        y="40" />
+
+    <!-- Shadow triangle top-right -->
+    <polygon style="fill:rgb(22, 22, 22);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto" clip-path="url(#clip-main)" fill="#161616"
+        points="340,40 540,40 540,240" />
+
+    <!-- N left vertical bar -->
+    <rect style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto" fill="#FFFFFF" height="180" rx="6" width="46" x="218"
+        y="118" />
+    <!-- N right vertical bar -->
+    <rect style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto" fill="#FFFFFF" height="180" rx="6" width="46" x="416"
+        y="118" />
+    <!-- N diagonal -->
+    <polygon style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto" fill="#FFFFFF"
+        points="218,118 264,118 462,298 416,298" />
+
+    <!-- Bottom underline accent -->
+    <rect style="fill:rgb(255, 255, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto" fill="#FFFFFF" height="10" rx="5" width="244" x="218"
+        y="318" />
+
+</svg>

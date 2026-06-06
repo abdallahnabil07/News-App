@@ -1,5 +1,10 @@
+/// Model representing a news article.
+///
+/// This class is used to map API response data into a structured object
+/// that can be used across the application layers (UI, Cubit, etc.).
 class ArticlesDataModel {
   final String sourceId;
+
   final String sourceName;
   final String title;
   final String description;
@@ -21,6 +26,7 @@ class ArticlesDataModel {
     required this.author,
   });
 
+  /// Creates an instance from JSON response
   factory ArticlesDataModel.fromJson(Map<String, dynamic> json) {
     return ArticlesDataModel(
       sourceId: json["source"]["id"],

@@ -15,7 +15,7 @@ abstract class AppTheme {
     primaryColor: AppColors.primaryColorLight,
     fontFamily: "inter",
     textTheme: GoogleFonts.interTextTheme(),
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       centerTitle: true,
       backgroundColor: Colors.transparent,
       titleTextStyle: TextStyle(

@@ -28,9 +28,9 @@ import '../../features/news/domain/repository/news_repository.dart' as _i1049;
 import '../../features/news/domain/repository/source_repository.dart' as _i24;
 import '../../features/news/domain/usecases/get_news_use_case.dart' as _i147;
 import '../../features/news/domain/usecases/get_sources_use_case.dart' as _i608;
-import '../../features/news/presention/cubit/news/news_state.dart' as _i931;
-import '../../features/news/presention/cubit/sources/sources_state.dart'
-    as _i249;
+import '../../features/news/presentation/cubit/news/news_state.dart' as _i551;
+import '../../features/news/presentation/cubit/sources/sources_state.dart'
+    as _i925;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -42,14 +42,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1020.NewsOnlineDataSources>(
       () => _i401.NewsOnlineDataSourceImpl(),
     );
-    gh.factory<_i931.NewsCubit>(
-      () => _i931.NewsCubit(gh<_i147.GetNewsUseCase>()),
-    );
     gh.factory<_i1049.NewsRepository>(
       () => _i563.NewsRepositoryImpl(gh<_i1020.NewsOnlineDataSources>()),
     );
     gh.factory<_i619.SourceOnlineDataSource>(
       () => _i473.SourceOnlineDataSourceImpl(),
+    );
+    gh.factory<_i147.GetNewsUseCase>(
+      () => _i147.GetNewsUseCase(gh<_i1049.NewsRepository>()),
+    );
+    gh.factory<_i551.NewsCubit>(
+      () => _i551.NewsCubit(gh<_i147.GetNewsUseCase>()),
     );
     gh.factory<_i24.SourceRepository>(
       () => _i1038.SourceRepositoryImpl(gh<_i619.SourceOnlineDataSource>()),
@@ -57,8 +60,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i608.GetSourcesUseCase>(
       () => _i608.GetSourcesUseCase(gh<_i24.SourceRepository>()),
     );
-    gh.factory<_i249.SourcesCubit>(
-      () => _i249.SourcesCubit(gh<_i608.GetSourcesUseCase>()),
+    gh.factory<_i925.SourcesCubit>(
+      () => _i925.SourcesCubit(gh<_i608.GetSourcesUseCase>()),
     );
     return this;
   }

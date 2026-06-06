@@ -37,8 +37,8 @@ flutter_native_splash:
   # remain optional. NOTE that if you specify the [required] color, then you cant
   # use the [required] background_image in the next section. the reverse is true.
   # select one, they cant work together.
-  color: "#FFFFFF"  ##====================================[REQUIRED]==========
-  color_dark: "#171717"
+  color: "#000000"  ##====================================[REQUIRED]==========
+  color_dark: "#000000"
   # platform-specific color. will override general color if active:
   #color_android: "#42a5f5"
   #color_dark_android: "#042a49"
@@ -63,8 +63,8 @@ flutter_native_splash:
   # general image for all platform (except android 12+):
   # allows you to specify an image used in the splash screen. It must be a
   # png file and should be sized for 4x pixel density.
-  image: assets/images/Splash.png
-  image_dark: assets/images/Splash_dark.png
+  image: assets/images/logo_app.png
+  image_dark: assets/images/logo_app.png
   # platform-specific image. will override general image if active:
   #image_android:       assets/splash-android.png
   #image_dark_android:  assets/splash-invert-android.png
@@ -133,8 +133,8 @@ flutter_native_splash:
   #! ANDROID 12+ configuration:
   android_12:
     # background color
-    color: "#FFFFFF"
-    color_dark: "#171717"
+    color: "#000000"
+    color_dark: "#000000"
 
     # center-logo
     # If this parameter is not specified, the app's launcher icon will be used instead.
@@ -142,13 +142,13 @@ flutter_native_splash:
     # with background: 960×960 px (fit within circle 640px in diameter)
     # without background: 1152×1152 px (fit within circle 768px in diameter)
     # ensure that the most important design elements of your image are placed within a circular area
-    image: assets/images/news_logo_light.png
-    image_dark: assets/images/news_logo_dark.png
+    image: assets/images/logo_app.png
+    image_dark: assets/images/logo_app.png
 
     # center-logo background color
-    icon_background_color: "#FFFFFF"
-    icon_background_color_dark: "#171717"
+    icon_background_color: "#000000"
+    icon_background_color_dark: "#000000"
 
 
-    branding: assets/images/news_branding_light_mode.png
-    branding_dark: assets/images/news_branding.png
+#    branding: assets/images/news_branding_light_mode.png
+#    branding_dark: assets/images/news_branding.png

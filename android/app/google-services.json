@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "788762865986",
+    "project_id": "news-app-cadab",
+    "storage_bucket": "news-app-cadab.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788762865986:android:6953ea65f963557e1c98db",
+        "android_client_info": {
+          "package_name": "com.example.news"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7-nJOOiUdVbqzMoIXvXhmDdiX6fDYF-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
