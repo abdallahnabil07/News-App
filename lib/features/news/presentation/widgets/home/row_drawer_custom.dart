@@ -51,15 +51,12 @@ class RowDrawerCustom extends StatelessWidget {
         child: Row(
           spacing: 8,
           mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
+          children:<Widget> [
             // SVG icon takes priority over PNG
             if (icon != null)
               icon!.svg(width: iconSize, height: iconSize)
-            else
-              if (pngIcon != null)
-                pngIcon!.image(width: iconSize,
-                    height: iconSize,
-                    color: AppColors.whiteColorBorder),
+            else if (pngIcon != null)
+              pngIcon!.image(width: iconSize, height: iconSize,color: AppColors.whiteColorBorder),
             Text(
               text,
               style: context.textTheme.bodyMedium!.copyWith(

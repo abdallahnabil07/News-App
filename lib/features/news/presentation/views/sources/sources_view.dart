@@ -38,13 +38,14 @@ class SourcesView extends StatelessWidget {
     return BlocBuilder<SourcesCubit, SourcesState>(
       builder: (context, state) {
         switch (state) {
+
           // No sources available yet
           case InitialSourcesState():
           case SourcesLoading():
           case SourcesError():
             return const SizedBox();
 
-          // Sources loaded successfully
+        // Sources loaded successfully
           case SourcesTabChanged():
           case SourcesLoaded():
             final cubit = context.read<SourcesCubit>();
@@ -53,6 +54,7 @@ class SourcesView extends StatelessWidget {
               sourceDataList: cubit.sourceData,
               currentIndex: cubit.currentIndex,
               onTabChanged: (index) {
+
                 // Update selected source tab
                 cubit.changeTab(index);
 

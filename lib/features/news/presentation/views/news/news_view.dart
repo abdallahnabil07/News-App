@@ -120,7 +120,7 @@ class _NewsViewState extends State<NewsView> {
               ),
             );
 
-          // Loaded, searching, and pagination states
+        // Loaded, searching, and pagination states
           case NewsLoadingMore():
           case NewsLoaded():
           case NewsSearching():
@@ -152,6 +152,7 @@ class _NewsViewState extends State<NewsView> {
                     ? articles.length + 1
                     : articles.length,
                 itemBuilder: (context, index) {
+
                   // News article item
                   if (index < articles.length) {
                     return ContainerNewsDetails(
@@ -159,6 +160,7 @@ class _NewsViewState extends State<NewsView> {
                       searchQuery: cubit.searchQuery,
                     );
                   } else {
+
                     // Pagination loading indicator
                     return cubit.hasMore
                         ? Padding(

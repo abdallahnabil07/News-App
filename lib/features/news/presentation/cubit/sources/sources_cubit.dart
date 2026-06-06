@@ -33,7 +33,10 @@ class SourcesCubit extends Cubit<SourcesState> {
     required String categoryId,
     String? country,
   }) async {
-    await _getSources(categoryId: categoryId, country: country);
+    await _getSources(
+      categoryId: categoryId,
+      country: country,
+    );
   }
 
   // ====================== INTERNAL LOGIC ======================
@@ -69,7 +72,9 @@ class SourcesCubit extends Cubit<SourcesState> {
         emit(SourcesError(failedMessage: error.message));
       } else {
         // Fallback for unexpected errors
-        emit(SourcesError(failedMessage: AppStrings.somethingWentWrong));
+        emit(SourcesError(
+          failedMessage: AppStrings.somethingWentWrong,
+        ));
       }
     }
   }

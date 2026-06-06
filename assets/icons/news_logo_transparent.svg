@@ -1,4 +1,4 @@
-<svg style="" role="img" viewBox="0 0 690 410" width="100%" xmlns="http://www.w3.org/2000/svg">
+<svg width="100%" viewBox="0 0 690 410" role="img" xmlns="http://www.w3.org/2000/svg" style="">
     <title
         style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
         News logo transparent background
@@ -7,11 +7,11 @@
         style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
         The word News in bold black Impact-style font on transparent background
     </desc>
-    <rect style="fill:rgba(0, 0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto" fill="transparent" height="400"
-        width="680" />
-    <text style="fill:rgb(250, 249, 245);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Impact, &quot;Arial Black&quot;, sans-serif;font-size:160px;font-weight:900;text-anchor:middle;dominant-baseline:auto" fill="var(--color-text-primary)" font-family="Impact, Arial Black, sans-serif" font-size="160"
-        font-weight="900" letter-spacing="-2" text-anchor="middle" x="340"
-        y="260">
+    <rect width="680" height="400" fill="transparent"
+        style="fill:rgba(0, 0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto" />
+    <text x="340" y="260" text-anchor="middle" font-family="Impact, Arial Black, sans-serif"
+        font-size="160" font-weight="900" fill="var(--color-text-primary)" letter-spacing="-2"
+        style="fill:rgb(250, 249, 245);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Impact, &quot;Arial Black&quot;, sans-serif;font-size:160px;font-weight:900;text-anchor:middle;dominant-baseline:auto">
         News
     </text>
 </svg>

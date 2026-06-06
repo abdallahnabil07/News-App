@@ -57,9 +57,7 @@ class SourceOnlineDataSourceImpl implements SourceOnlineDataSource {
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
 
-        return SourceDataModel
-            .fromJson(data)
-            .sources;
+        return SourceDataModel.fromJson(data).sources;
       }
 
       /// Handle non-success HTTP responses

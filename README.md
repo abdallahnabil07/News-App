@@ -1,32 +1,28 @@
 # 📰 News App
 
-A modern Flutter news application that delivers real-time news with push notifications, smart
-categories, and a clean architecture.
+A modern Flutter news application that delivers real-time news with push notifications, smart categories, and a clean architecture.
 
 ## 🖼️ Screenshots
 
-| Cover                           | Light & Dark Modes                    | Responsive UI                              |
-|---------------------------------|---------------------------------------|--------------------------------------------|
-| ![Cover](screenshots/Cover.png) | ![Themes](screenshots/light_dark.png) | ![Responsive](screenshots/response_ui.png) |
+| Cover | Light & Dark Modes | Responsive UI |
+|-------|-------------------|---------------|
+| ![Cover](assets/screenshots/cover.png) | ![Themes](assets/screenshots/light_dark_modes.png) | ![Responsive](assets/screenshots/response_ui.png) |
 
-| Categories                                | Read Full Article                | Filter by Country                       |
-|-------------------------------------------|----------------------------------|-----------------------------------------|
-| ![Categories](screenshots/Categories.png) | ![Web](screenshots/open_web.png) | ![Filter](screenshots/filter_solve.png) |
+| Categories | Read Full Article | Filter by Country |
+|-----------|-------------------|------------------|
+| ![Categories](assets/screenshots/categories.png) | ![Web](assets/screenshots/read_ful_article.png) | ![Filter](assets/screenshots/filter_by_country.png) |
 
-| Search                            | Bookmarks                               | Push Notifications                              |
-|-----------------------------------|-----------------------------------------|-------------------------------------------------|
-| ![Search](screenshots/search.png) | ![Bookmarks](screenshots/bookmark2.png) | ![Notifications](screenshots/notification2.png) |
+| Search | Bookmarks | Push Notifications |
+|--------|-----------|-------------------|
+| ![Search](assets/screenshots/search.png) | ![Bookmarks](assets/screenshots/bookmarks.png) | ![Notifications](assets/screenshots/push_notifications.png) |
 
-| Error Handling                           |
-|------------------------------------------|
-| ![Error](screenshots/error_handling.png) |
-
+| Error Handling |
+|---------------|
+| ![Error](assets/screenshots/error_handling.png) |
 ## ✨ Features
 
-- 🔔 **Push Notifications** — Automated breaking news notifications via Firebase Cloud Messaging,
-  delivered per country using a Node.js backend server deployed on Railway
-- 📂 **Smart Categories** — Browse news by category: General, Business, Sports, Science, Health,
-  Entertainment, Technology
+- 🔔 **Push Notifications** — Automated breaking news notifications via Firebase Cloud Messaging, delivered per country using a Node.js backend server deployed on Railway
+- 📂 **Smart Categories** — Browse news by category: General, Business, Sports, Science, Health, Entertainment, Technology
 - 🌍 **Filter by Country** — Switch between USA, UK, Germany, France, Italy, Russia and more
 - 🔖 **Bookmarks** — Save articles locally using Hive for offline reading
 - 🔍 **Search** — Real-time search with keyword highlighting
@@ -64,19 +60,19 @@ lib/
 
 ## 🛠️ Tech Stack
 
-| Layer              | Technology                    |
-|--------------------|-------------------------------|
-| Framework          | Flutter                       |
-| State Management   | BLoC / Cubit                  |
-| Architecture       | Clean Architecture            |
-| Local Storage      | Hive                          |
-| Push Notifications | Firebase Cloud Messaging      |
-| Backend Server     | Node.js + node-cron (Railway) |
-| News Data          | NewsAPI.org REST API          |
-| HTTP Client        | http package                  |
-| DI                 | Injectable + GetIt            |
-| Image Loading      | CachedNetworkImage            |
-| Animations         | flutter_bounceable            |
+| Layer | Technology |
+|-------|-----------|
+| Framework | Flutter |
+| State Management | BLoC / Cubit |
+| Architecture | Clean Architecture |
+| Local Storage | Hive |
+| Push Notifications | Firebase Cloud Messaging |
+| Backend Server | Node.js + node-cron (Railway) |
+| News Data | NewsAPI.org REST API |
+| HTTP Client | http package |
+| DI | Injectable + GetIt |
+| Image Loading | CachedNetworkImage |
+| Animations | flutter_bounceable |
 
 ---
 

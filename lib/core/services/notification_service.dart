@@ -34,7 +34,10 @@ class NotificationService {
       final uri = Uri.parse(url);
 
       if (await canLaunchUrl(uri)) {
-        await launchUrl(uri, mode: LaunchMode.externalApplication);
+        await launchUrl(
+          uri,
+          mode: LaunchMode.externalApplication,
+        );
       }
     }
   }
@@ -68,7 +71,8 @@ class NotificationService {
     });
 
     /// Handle notification tap when app is terminated
-    RemoteMessage? initialMessage = await messaging.getInitialMessage();
+    RemoteMessage? initialMessage =
+    await messaging.getInitialMessage();
 
     if (initialMessage != null) {
       Future.delayed(const Duration(seconds: 1), () {

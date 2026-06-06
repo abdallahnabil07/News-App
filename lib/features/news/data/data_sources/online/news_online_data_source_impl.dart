@@ -24,9 +24,10 @@ class NewsOnlineDataSourceImpl implements NewsOnlineDataSources {
   /// [sourceID] → news source identifier
   /// [page] → pagination index (default = 1)
   @override
-  Future<List<ArticlesDataModel>> getAllNews(String sourceID, {
-    int page = 1,
-  }) async {
+  Future<List<ArticlesDataModel>> getAllNews(
+      String sourceID, {
+        int page = 1,
+      }) async {
     try {
       // Build request URL with query parameters
       final uri = Uri.http(

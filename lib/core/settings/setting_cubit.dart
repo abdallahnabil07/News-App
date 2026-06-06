@@ -28,7 +28,7 @@ class SettingsCubit extends Cubit<ThemeMode> {
         emit(ThemeMode.dark);
         break;
 
-      /// Default fallback when no saved theme exists
+    /// Default fallback when no saved theme exists
       default:
         emit(ThemeMode.system);
     }

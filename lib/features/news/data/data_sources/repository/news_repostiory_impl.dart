@@ -21,9 +21,10 @@ class NewsRepositoryImpl implements NewsRepository {
   /// [sourceID] → ID of the news source
   /// [page] → pagination index (default = 1)
   @override
-  Future<List<ArticlesDataModel>> getAllNews(String sourceID, {
-    int page = 1,
-  }) {
+  Future<List<ArticlesDataModel>> getAllNews(
+      String sourceID, {
+        int page = 1,
+      }) {
     return onlineDataSource.getAllNews(
       sourceID,
       page: page,
