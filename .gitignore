@@ -43,3 +43,5 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+# API Keys - keep secret
+lib/core/network/network handler/api_constants.dart

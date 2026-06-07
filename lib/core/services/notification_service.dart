@@ -23,7 +23,7 @@ Future<void> handleBackgroundMessage(RemoteMessage message) async {
 /// - Deep linking via notification data
 /// - Topic subscription (country-based filtering)
 class NotificationService {
-  /// Firebase Messaging instance
+  // Firebase Messaging instance
   static FirebaseMessaging messaging = FirebaseMessaging.instance;
 
   /// Opens URL from notification payload (if exists)
@@ -81,28 +81,14 @@ class NotificationService {
     }
   }
 
-  /// Subscribes user to a country-based notification topic
+  /// Subscribes user to the global news notification topic [news_all].
   ///
-  /// This allows sending targeted news notifications per country.
+  /// All users receive the same breaking news notifications
+  /// regardless of their selected country.
   static Future<void> subscribeToCountry(String? country) async {
     try {
-      /// List of supported countries for notifications
-      final countries = ['us', 'gb', 'de', 'fr', 'it', 'ru'];
-
-      /// Unsubscribe from all country topics first
-      for (final c in countries) {
-        await messaging.unsubscribeFromTopic('news_$c');
-      }
-
-      /// Unsubscribe from global topic
-      await messaging.unsubscribeFromTopic('news_all');
-
-      /// Subscribe based on selected country
-      if (country == null) {
-        await messaging.subscribeToTopic('news_all');
-      } else {
-        await messaging.subscribeToTopic('news_$country');
-      }
+      // Subscribe to global news topic
+      await messaging.subscribeToTopic('news_all');
     } catch (e) {
       log("FCM Topic Error: $e");
     }

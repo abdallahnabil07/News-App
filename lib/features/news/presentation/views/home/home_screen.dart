@@ -70,38 +70,46 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (context, state) {
           final cubit = context.watch<HomeCubit>();
 
-          return Scaffold(
-
-            /// ---------------- APP BAR ----------------
-            /// - Shows category title OR search field
-            /// - Handles entering/exiting search mode
-            appBar: AppBar(
-              automaticallyImplyLeading: !state.isSearching,
-
-              title: state.isSearching
-                  ? _buildSearchField(context, state)
-                  : Text(state.selectedCategory?.name ?? AppStrings.home),
-
-              actions: _buildAppBarActions(context, state, cubit),
-            ),
-
-            /// ---------------- DRAWER ----------------
-            /// Hidden during search mode
-            drawer: state.isSearching
-                ? null
-                : DrawerCustom(
-              onTap: () {
+          return PopScope(
+            canPop: state.selectedCategory == null,
+            onPopInvokedWithResult: (didPop, result) {
+              if (!didPop && state.selectedCategory != null) {
                 cubit.goHome();
-                Navigator.pop(context);
-              },
+              }
+            },
+            child: Scaffold(
+            
+              /// ---------------- APP BAR ----------------
+              /// - Shows category title OR search field
+              /// - Handles entering/exiting search mode
+              appBar: AppBar(
+                automaticallyImplyLeading: !state.isSearching,
+            
+                title: state.isSearching
+                    ? _buildSearchField(context, state)
+                    : Text(state.selectedCategory?.name ?? AppStrings.home),
+            
+                actions: _buildAppBarActions(context, state, cubit),
+              ),
+            
+              /// ---------------- DRAWER ----------------
+              /// Hidden during search mode
+              drawer: state.isSearching
+                  ? null
+                  : DrawerCustom(
+                onTap: () {
+                  cubit.goHome();
+                  Navigator.pop(context);
+                },
+              ),
+            
+              /// ---------------- BODY ----------------
+              /// - No category → show categories list
+              /// - Category selected → show news data page
+              body: state.selectedCategory == null
+                  ? _buildCategoriesList(context, cubit)
+                  : PageNewsData(categoryData: state.selectedCategory!),
             ),
-
-            /// ---------------- BODY ----------------
-            /// - No category → show categories list
-            /// - Category selected → show news data page
-            body: state.selectedCategory == null
-                ? _buildCategoriesList(context, cubit)
-                : PageNewsData(categoryData: state.selectedCategory!),
           );
         },
       ),
