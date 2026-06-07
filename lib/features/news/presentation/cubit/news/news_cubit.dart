@@ -60,7 +60,6 @@ class NewsCubit extends Cubit<NewsState> {
       }
 
       final response = await getNewsUseCase(sourceId, page: page);
-      print("Page $page → got ${response.length} articles");
       // Replace or append articles
       if (page == 1) {
         _articles = response;
@@ -112,7 +111,6 @@ class NewsCubit extends Cubit<NewsState> {
   Future<void> loadMore() async {
     if (isLoadingMore || !hasMore || _isSearching) return;
     if (state is NewsLoadingMore) return;
-    print("Loading page: ${page + 1}"); // ← add this
     await getAllArticles(
       page: page + 1,
       sourceId: _currentSourceId,

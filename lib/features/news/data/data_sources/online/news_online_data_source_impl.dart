@@ -54,8 +54,6 @@ class NewsOnlineDataSourceImpl implements NewsOnlineDataSources {
             .map((json) => ArticlesDataModel.fromJson(json))
             .toList();
       }
-      print("Status Code: ${response.statusCode}");
-      print("Body: ${response.body}");
       // Handle non-success HTTP responses
       throw NetworkException.fromStatusCode(response.statusCode);
     }
