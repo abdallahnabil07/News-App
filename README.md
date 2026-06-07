@@ -23,7 +23,6 @@ A modern Flutter news application that delivers real-time news with push notific
 
 
 ## ✨ Features
-## ✨ Features
 
 - 🔔 **Push Notifications** — Automated breaking news notifications via Firebase Cloud Messaging, delivered per country using a Node.js backend server deployed on Railway
 - 📂 **Smart Categories** — Browse news by category: General, Business, Sports, Science, Health, Entertainment, Technology
