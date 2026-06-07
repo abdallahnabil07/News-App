@@ -48,8 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
 
     // Initialize cubits
-    _homeCubit = HomeCubit()
-      ..init();
+    _homeCubit = HomeCubit()..init();
     _newsCubit = getIt<NewsCubit>();
   }
 
@@ -78,31 +77,30 @@ class _HomeScreenState extends State<HomeScreen> {
               }
             },
             child: Scaffold(
-            
               /// ---------------- APP BAR ----------------
               /// - Shows category title OR search field
               /// - Handles entering/exiting search mode
               appBar: AppBar(
                 automaticallyImplyLeading: !state.isSearching,
-            
+
                 title: state.isSearching
                     ? _buildSearchField(context, state)
                     : Text(state.selectedCategory?.name ?? AppStrings.home),
-            
+
                 actions: _buildAppBarActions(context, state, cubit),
               ),
-            
+
               /// ---------------- DRAWER ----------------
               /// Hidden during search mode
               drawer: state.isSearching
                   ? null
                   : DrawerCustom(
-                onTap: () {
-                  cubit.goHome();
-                  Navigator.pop(context);
-                },
-              ),
-            
+                      onTap: () {
+                        cubit.goHome();
+                        Navigator.pop(context);
+                      },
+                    ),
+
               /// ---------------- BODY ----------------
               /// - No category → show categories list
               /// - Category selected → show news data page
@@ -176,18 +174,18 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   /// Builds AppBar action buttons (search icon)
-  List<Widget> _buildAppBarActions(BuildContext context,
-      HomeState state,
-      HomeCubit cubit,) {
+  List<Widget> _buildAppBarActions(
+    BuildContext context,
+    HomeState state,
+    HomeCubit cubit,
+  ) {
     if (state.isSearching || state.selectedCategory == null) {
       return [];
     }
 
     return [
       Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: context.paddingWidth16,
-        ),
+        padding: EdgeInsets.symmetric(horizontal: context.paddingWidth16),
         child: Bounceable(
           onTap: () {
             context.read<NewsCubit>().startSearch();
@@ -208,37 +206,35 @@ class _HomeScreenState extends State<HomeScreen> {
 
   /// Builds categories list screen (home default state)
   Widget _buildCategoriesList(BuildContext context, HomeCubit cubit) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: context.paddingWidth16,
-            vertical: context.paddingHeight16,
-          ),
-          child: Text(
-            "${AppStrings.goodMorning}\n${AppStrings.homeSubtitle}",
-            style: context.textTheme.bodyLarge!.copyWith(
-              fontSize: context.hg(24),
-              fontWeight: FontWeight.w500,
-              color: context.isDark
-                  ? AppColors.primaryColorLight
-                  : AppColors.primaryColorDark,
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: context.paddingWidth16,
+              vertical: context.paddingHeight16,
+            ),
+            child: Text(
+              "${AppStrings.goodMorning}\n${AppStrings.homeSubtitle}",
+              style: context.textTheme.bodyLarge!.copyWith(
+                fontSize: context.hg(24),
+                fontWeight: FontWeight.w500,
+                color: context.isDark
+                    ? AppColors.primaryColorLight
+                    : AppColors.primaryColorDark,
+              ),
             ),
           ),
         ),
-
-        /// Categories grid/list
-        Expanded(
-          child: ListView.builder(
-            itemCount: CategoryList.categories.length,
-            itemBuilder: (context, index) {
-              return CategoryContainerCustom(
-                onTab: cubit.selectCategory,
-                isLeft: index % 2 == 0,
-                categoryData: CategoryList.categories[index],
-              );
-            },
+        // Categories list
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) => CategoryContainerCustom(
+              onTab: cubit.selectCategory,
+              isLeft: index % 2 == 0,
+              categoryData: CategoryList.categories[index],
+            ),
+            childCount: CategoryList.categories.length,
           ),
         ),
       ],

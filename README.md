@@ -14,11 +14,17 @@ A modern Flutter news application that delivers real-time news with push notific
 
 | Search | Bookmarks | Push Notifications |
 |--------|-----------|-------------------|
-| ![Search](assets/screenshots/search.png) | ![Bookmarks](assets/screenshots/bookmarks.png) | ![Notifications](assets/screenshots/push_notifications.png) |
+| ![Search](assets/screenshots/searching.png) | ![Bookmarks](assets/screenshots/bookmarks.png) | ![Notifications](assets/screenshots/push_notifications.png) |
 
 | Error Handling |
 |---------------|
 | ![Error](assets/screenshots/error_handling.png) |
+
+| Contact Us |
+|------------|
+| ![Contact Us](assets/screenshots/contact_us.png) |
+
+## ✨ Features
 ## ✨ Features
 
 - 🔔 **Push Notifications** — Automated breaking news notifications via Firebase Cloud Messaging, delivered per country using a Node.js backend server deployed on Railway

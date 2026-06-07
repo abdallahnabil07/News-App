@@ -30,7 +30,7 @@ class NewsOnlineDataSourceImpl implements NewsOnlineDataSources {
       }) async {
     try {
       // Build request URL with query parameters
-      final uri = Uri.http(
+      final uri = Uri.https(
         ApiConstants.domain,
         EndPoints.getNews,
         {
@@ -54,7 +54,8 @@ class NewsOnlineDataSourceImpl implements NewsOnlineDataSources {
             .map((json) => ArticlesDataModel.fromJson(json))
             .toList();
       }
-
+      print("Status Code: ${response.statusCode}");
+      print("Body: ${response.body}");
       // Handle non-success HTTP responses
       throw NetworkException.fromStatusCode(response.statusCode);
     }

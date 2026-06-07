@@ -17,6 +17,8 @@ abstract class AppTheme {
     textTheme: GoogleFonts.interTextTheme(),
     appBarTheme: const AppBarTheme(
       centerTitle: true,
+      scrolledUnderElevation: 0,
+      surfaceTintColor: Colors.transparent,
       backgroundColor: Colors.transparent,
       titleTextStyle: TextStyle(
         fontWeight: FontWeight.w400,
@@ -34,6 +36,8 @@ abstract class AppTheme {
     fontFamily: "inter",
     appBarTheme: AppBarTheme(
       centerTitle: true,
+      surfaceTintColor: Colors.transparent,
+      scrolledUnderElevation: 0,
       backgroundColor: Colors.transparent,
       foregroundColor: AppColors.primaryColorLight,
       titleTextStyle: TextStyle(
