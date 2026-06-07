@@ -20,9 +20,7 @@ A modern Flutter news application that delivers real-time news with push notific
 |---------------|
 | ![Error](assets/screenshots/error_handling.png) |
 
-| Contact Us |
-|------------|
-| ![Contact Us](assets/screenshots/contact_us.png) |
+
 
 ## ✨ Features
 ## ✨ Features
